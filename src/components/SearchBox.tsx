@@ -11,7 +11,7 @@ type Props = {
 export default function SearchBox(props: Props) {
   return (
     <form onSubmit={props.onSubmit} 
-    className='flex relative items-center justify-center h-10'>
+    className={cn("flex relative items-center justify-center h-10", props.className)}>
         <input type='text' 
         placeholder='Search location...' 
         onChange={props.onChange} 
