@@ -1,0 +1,1 @@
+this notes are for weather application project
