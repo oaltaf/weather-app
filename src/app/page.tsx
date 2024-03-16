@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 interface Coord {
@@ -59,6 +60,16 @@ interface WeatherData {
 //https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=48a07e6a1a6d1180fbac61a592b85def
 
 export default function Home() {
+  
+    const { isPending, error, data } = useQuery({
+      queryKey: ['repoData'],
+      queryFn: async() =>
+        fetch('https://api.openweathermap.org/data/2.5/weather?q=Lahore&appid=48a07e6a1a6d1180fbac61a592b85def').then((res) =>
+          res.json(),
+        ),
+    })
+    if (isPending) return 'Loading...'
+    
   return (
     <div className="flex flex-col gap-4 bg-gray-100 min-h-screen">
       <Navbar/>
